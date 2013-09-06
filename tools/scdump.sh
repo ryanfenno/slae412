@@ -10,7 +10,7 @@ shellcode=$(objdump -d $1 | \
 
 # shellcode in c-style
 count=0
-printf "unsigned char s[] =\n\""
+printf "\nunsigned char s[] =\n\""
 for byte in $(echo $shellcode | sed 's/\\x/ /g'); do
     (( count++ ))
     printf "\\"
@@ -20,14 +20,14 @@ for byte in $(echo $shellcode | sed 's/\\x/ /g'); do
         printf "\"\n\""
     fi
 done
-printf "\"\n"
+printf "\";\n\n"
 
 # count bytes
 length=$(echo -ne $shellcode | wc -c)
-echo "[scdump] shellcode length: $length"
+echo "shellcode length: $length"
 
 # test for null bytes
 num_null=$(echo $shellcode | grep '\\x00' | wc -c)
 if [ $num_null -gt 0 ]; then
-    echo "[scdump] null byte(s) present!"
+    echo "null byte(s) present!"
 fi
