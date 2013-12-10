@@ -9,25 +9,31 @@ shellcode=$(objdump -d $1 | \
     paste -d '' -s)
 
 # shellcode in c-style
+# count bytes
+length=$(echo -ne $shellcode | wc -c)
+echo "// shellcode length: $length"
+
 count=0
-printf "\nunsigned char s[] =\n\""
+printf "\n#include <stdio.h>\n\n"
+printf "unsigned char s[] =\n\""
 for byte in $(echo $shellcode | sed 's/\\x/ /g'); do
     (( count++ ))
     printf "\\"
     printf "x$byte"
 
-    if [ $(( $count % 15 )) -eq 0 ]; then
+    if [ $(( $count % 16 )) -eq 0 ]; then
         printf "\"\n\""
     fi
 done
 printf "\";\n\n"
-
-# count bytes
-length=$(echo -ne $shellcode | wc -c)
-echo "shellcode length: $length"
+echo "void main() {"
+echo "    printf(\"shellcode length:   %d\\n\", sizeof(s)-1);"
+echo "    ((int(*)())s)();"
+echo "}"
 
 # test for null bytes
 num_null=$(echo $shellcode | grep '\\x00' | wc -c)
 if [ $num_null -gt 0 ]; then
-    echo "null byte(s) present!"
+    echo "// null byte(s) present!"
 fi
+

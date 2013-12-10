@@ -1,0 +1,18 @@
+#!/bin/bash
+
+prog=$1
+has_ext=$( echo $prog | grep '\.nasm$' | wc -l )
+if [ $has_ext -gt 0 ]; then
+  prog=$(echo $prog | sed 's/\.nasm$//')
+fi
+
+echo '[+] Assembling with Nasm ... '
+nasm -f elf32 -o $prog.o $prog.nasm
+
+echo '[+] Linking ...'
+ld -o $prog $prog.o
+
+echo '[+] Done!'
+
+
+
