@@ -1,0 +1,5 @@
+Create a Shell_Reverse_TCP shellcode
+ -reverse connects to configured IP and port
+ -execs shell on successful connection
+
+IP and port should be easily configurable
