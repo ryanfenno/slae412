@@ -1,0 +1,3 @@
+#!/bin/sh
+( nasmcompile cast128cbc_encrypt || rm cast128cbc_encrypt ) && \
+   ( gdb -q -x cast128cbc_encrypt.gdbinit ./cast128cbc_encrypt )

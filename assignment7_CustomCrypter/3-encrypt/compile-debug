@@ -1,0 +1,3 @@
+#!/bin/sh
+( nasmcompile crypter || rm crypter ) && \
+   ( gdb -q -x crypter.gdbinit ./crypter )

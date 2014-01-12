@@ -1,0 +1,1792 @@
+    ; ---- z0z1z2z3
+    mov eax, [esp + 0x00]   ; x0x1x2x3
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xD]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xE]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE] ^ S7[x8]
+    mov [esp + 0x10], eax
+    ; ---- z4z5z6z7
+    mov eax, [esp + 0x08]   ; x8x9xAxB
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xA]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3] ^ S8[xA]
+    mov [esp + 0x14], eax
+    ; ---- z8z9zAzB
+    mov eax, [esp + 0x0C]   ; xCxDxExF
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4] ^ S5[x9]
+    mov [esp + 0x18], eax
+    ; ---- zCzDzEzF
+    mov eax, [esp + 0x04]   ; x4x5x6x7
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8] ^ S6[xB]
+    mov [esp + 0x1C], eax
+    ; ---- K1
+    xor eax, eax
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z8]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z8] ^ S6[z9]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z7]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7] ^ S8[z6]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z2]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7] ^ S8[z6] ^ S5[z2]
+    mov [esp + 0x20], eax
+    ; ---- K2
+    xor eax, eax
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zA]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zA] ^ S6[zB]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5] ^ S8[z4] ^ S6[z6]
+    mov [esp + 0x24], eax
+    ; ---- K3
+    xor eax, eax
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zC]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zC]
+    mov cl,  [esp + 0x1E]   ; zD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zC] ^ S6[zD]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3] ^ S8[z2]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z9]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3] ^ S8[z2] ^ S7[z9]
+    mov [esp + 0x28], eax
+    ; ---- K4
+    xor eax, eax
+    mov cl,  [esp + 0x1D]   ; zE
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zE]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zE]
+    mov cl,  [esp + 0x1C]   ; zF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zE] ^ S6[zF]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z0]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1] ^ S8[z0]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zC]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1] ^ S8[z0] ^ S8[zC]
+    mov [esp + 0x2C], eax
+    ; ---- x0x1x2x3
+    mov eax, [esp + 0x18]   ; z8z9zAzB
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z4]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z0]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6] ^ S7[z0]
+    mov [esp + 0x00], eax
+    ; ---- x4x5x6x7
+    mov eax, [esp + 0x10]   ; z0z1z2z3
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3] ^ S8[z2]
+    mov [esp + 0x04], eax
+    ; ---- x8x9xAxB
+    mov eax, [esp + 0x14]   ; z4z5z6z7
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4] ^ S5[z1]
+    mov [esp + 0x08], eax
+    ; ---- xCxDxExF
+    mov eax, [esp + 0x1C]   ; zCzDzEzF
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z3]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8] ^ S6[z3]
+    mov [esp + 0x0C], eax
+    ; ---- K5
+    xor eax, eax
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x3]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x3] ^ S6[x2]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC] ^ S8[xD]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC] ^ S8[xD] ^ S5[x8]
+    mov [esp + 0x30], eax
+    ; ---- K6
+    xor eax, eax
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x1]
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x0]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x1] ^ S6[x0]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xE]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xF]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE] ^ S8[xF]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE] ^ S8[xF] ^ S6[xD]
+    mov [esp + 0x34], eax
+    ; ---- K7
+    xor eax, eax
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x9]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8] ^ S8[x9]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8] ^ S8[x9] ^ S7[x3]
+    mov [esp + 0x38], eax
+    ; ---- K8
+    xor eax, eax
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x4]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x5] ^ S6[x4]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xA]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xB]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA] ^ S8[xB]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x7]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA] ^ S8[xB] ^ S8[x7]
+    mov [esp + 0x3C], eax
+    ; ---- z0z1z2z3
+    mov eax, [esp + 0x00]   ; x0x1x2x3
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xD]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xE]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE] ^ S7[x8]
+    mov [esp + 0x10], eax
+    ; ---- z4z5z6z7
+    mov eax, [esp + 0x08]   ; x8x9xAxB
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xA]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3] ^ S8[xA]
+    mov [esp + 0x14], eax
+    ; ---- z8z9zAzB
+    mov eax, [esp + 0x0C]   ; xCxDxExF
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4] ^ S5[x9]
+    mov [esp + 0x18], eax
+    ; ---- zCzDzEzF
+    mov eax, [esp + 0x04]   ; x4x5x6x7
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8] ^ S6[xB]
+    mov [esp + 0x1C], eax
+    ; ---- K9
+    xor eax, eax
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z3] ^ S6[z2]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC]
+    mov cl,  [esp + 0x1E]   ; zD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC] ^ S8[zD]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC] ^ S8[zD] ^ S5[z9]
+    mov [esp + 0x40], eax
+    ; ---- K10
+    xor eax, eax
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z1]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z0]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z1] ^ S6[z0]
+    mov cl,  [esp + 0x1D]   ; zE
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zE]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE]
+    mov cl,  [esp + 0x1C]   ; zF
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zF]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE] ^ S8[zF]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zC]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE] ^ S8[zF] ^ S6[zC]
+    mov [esp + 0x44], eax
+    ; ---- K11
+    xor eax, eax
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z9]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8] ^ S8[z9]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z2]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8] ^ S8[z9] ^ S7[z2]
+    mov [esp + 0x48], eax
+    ; ---- K12
+    xor eax, eax
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z4]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z5] ^ S6[z4]
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zA]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zB]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA] ^ S8[zB]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA] ^ S8[zB] ^ S8[z6]
+    mov [esp + 0x4C], eax
+    ; ---- x0x1x2x3
+    mov eax, [esp + 0x18]   ; z8z9zAzB
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z4]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z0]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6] ^ S7[z0]
+    mov [esp + 0x00], eax
+    ; ---- x4x5x6x7
+    mov eax, [esp + 0x10]   ; z0z1z2z3
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3] ^ S8[z2]
+    mov [esp + 0x04], eax
+    ; ---- x8x9xAxB
+    mov eax, [esp + 0x14]   ; z4z5z6z7
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4] ^ S5[z1]
+    mov [esp + 0x08], eax
+    ; ---- xCxDxExF
+    mov eax, [esp + 0x1C]   ; zCzDzEzF
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z3]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8] ^ S6[z3]
+    mov [esp + 0x0C], eax
+    ; ---- K13
+    xor eax, eax
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x8]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x8] ^ S6[x9]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x7]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7] ^ S8[x6]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7] ^ S8[x6] ^ S5[x3]
+    mov [esp + 0x50], eax
+    ; ---- K14
+    xor eax, eax
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xA]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xA] ^ S6[xB]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5] ^ S8[x4] ^ S6[x7]
+    mov [esp + 0x54], eax
+    ; ---- K15
+    xor eax, eax
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xC]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xC]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xC] ^ S6[xD]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3] ^ S8[x2]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3] ^ S8[x2] ^ S7[x8]
+    mov [esp + 0x58], eax
+    ; ---- K16
+    xor eax, eax
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xE]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xE]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xE] ^ S6[xF]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1]
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x0]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1] ^ S8[x0]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1] ^ S8[x0] ^ S8[xD]
+    mov [esp + 0x5C], eax
+    ; ---- z0z1z2z3
+    mov eax, [esp + 0x00]   ; x0x1x2x3
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xD]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xE]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE] ^ S7[x8]
+    mov [esp + 0x10], eax
+    ; ---- z4z5z6z7
+    mov eax, [esp + 0x08]   ; x8x9xAxB
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xA]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3] ^ S8[xA]
+    mov [esp + 0x14], eax
+    ; ---- z8z9zAzB
+    mov eax, [esp + 0x0C]   ; xCxDxExF
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4] ^ S5[x9]
+    mov [esp + 0x18], eax
+    ; ---- zCzDzEzF
+    mov eax, [esp + 0x04]   ; x4x5x6x7
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8] ^ S6[xB]
+    mov [esp + 0x1C], eax
+    ; ---- K17
+    xor eax, eax
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z8]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z8] ^ S6[z9]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z7]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7] ^ S8[z6]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z2]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z8] ^ S6[z9] ^ S7[z7] ^ S8[z6] ^ S5[z2]
+    mov [esp + 0x60], eax
+    ; ---- K18
+    xor eax, eax
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zA]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zA] ^ S6[zB]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zA] ^ S6[zB] ^ S7[z5] ^ S8[z4] ^ S6[z6]
+    mov [esp + 0x64], eax
+    ; ---- K19
+    xor eax, eax
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zC]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zC]
+    mov cl,  [esp + 0x1E]   ; zD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zC] ^ S6[zD]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3] ^ S8[z2]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z9]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zC] ^ S6[zD] ^ S7[z3] ^ S8[z2] ^ S7[z9]
+    mov [esp + 0x68], eax
+    ; ---- K20
+    xor eax, eax
+    mov cl,  [esp + 0x1D]   ; zE
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zE]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[zE]
+    mov cl,  [esp + 0x1C]   ; zF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[zE] ^ S6[zF]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z0]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1] ^ S8[z0]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zC]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[zE] ^ S6[zF] ^ S7[z1] ^ S8[z0] ^ S8[zC]
+    mov [esp + 0x6C], eax
+    ; ---- x0x1x2x3
+    mov eax, [esp + 0x18]   ; z8z9zAzB
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z4]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z0]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6] ^ S7[z0]
+    mov [esp + 0x00], eax
+    ; ---- x4x5x6x7
+    mov eax, [esp + 0x10]   ; z0z1z2z3
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3] ^ S8[z2]
+    mov [esp + 0x04], eax
+    ; ---- x8x9xAxB
+    mov eax, [esp + 0x14]   ; z4z5z6z7
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4] ^ S5[z1]
+    mov [esp + 0x08], eax
+    ; ---- xCxDxExF
+    mov eax, [esp + 0x1C]   ; zCzDzEzF
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z3]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8] ^ S6[z3]
+    mov [esp + 0x0C], eax
+    ; ---- K21
+    xor eax, eax
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x3]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x3] ^ S6[x2]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC] ^ S8[xD]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x3] ^ S6[x2] ^ S7[xC] ^ S8[xD] ^ S5[x8]
+    mov [esp + 0x70], eax
+    ; ---- K22
+    xor eax, eax
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x1]
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x0]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x1] ^ S6[x0]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xE]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xF]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE] ^ S8[xF]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x1] ^ S6[x0] ^ S7[xE] ^ S8[xF] ^ S6[xD]
+    mov [esp + 0x74], eax
+    ; ---- K23
+    xor eax, eax
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x9]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8] ^ S8[x9]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x7] ^ S6[x6] ^ S7[x8] ^ S8[x9] ^ S7[x3]
+    mov [esp + 0x78], eax
+    ; ---- K24
+    xor eax, eax
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x4]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x5] ^ S6[x4]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xA]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xB]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA] ^ S8[xB]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x7]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x5] ^ S6[x4] ^ S7[xA] ^ S8[xB] ^ S8[x7]
+    mov [esp + 0x7C], eax
+    ; ---- z0z1z2z3
+    mov eax, [esp + 0x00]   ; x0x1x2x3
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xD]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF]
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC]
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xE]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x0x1x2x3 ^ S5[xD] ^ S6[xF] ^ S7[xC] ^ S8[xE] ^ S7[x8]
+    mov [esp + 0x10], eax
+    ; ---- z4z5z6z7
+    mov eax, [esp + 0x08]   ; x8x9xAxB
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3]
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xA]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x8x9xAxB ^ S5[z0] ^ S6[z2] ^ S7[z1] ^ S8[z3] ^ S8[xA]
+    mov [esp + 0x14], eax
+    ; ---- z8z9zAzB
+    mov eax, [esp + 0x0C]   ; xCxDxExF
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; xCxDxExF ^ S5[z7] ^ S6[z6] ^ S7[z5] ^ S8[z4] ^ S5[x9]
+    mov [esp + 0x18], eax
+    ; ---- zCzDzEzF
+    mov eax, [esp + 0x04]   ; x4x5x6x7
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[zA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; x4x5x6x7 ^ S5[zA] ^ S6[z9] ^ S7[zB] ^ S8[z8] ^ S6[xB]
+    mov [esp + 0x1C], eax
+    ; ---- K25
+    xor eax, eax
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z3] ^ S6[z2]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zC]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC]
+    mov cl,  [esp + 0x1E]   ; zD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC] ^ S8[zD]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z9]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z3] ^ S6[z2] ^ S7[zC] ^ S8[zD] ^ S5[z9]
+    mov [esp + 0x80], eax
+    ; ---- K26
+    xor eax, eax
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z1]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z0]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z1] ^ S6[z0]
+    mov cl,  [esp + 0x1D]   ; zE
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zE]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE]
+    mov cl,  [esp + 0x1C]   ; zF
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zF]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE] ^ S8[zF]
+    mov cl,  [esp + 0x1F]   ; zC
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[zC]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z1] ^ S6[z0] ^ S7[zE] ^ S8[zF] ^ S6[zC]
+    mov [esp + 0x84], eax
+    ; ---- K27
+    xor eax, eax
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z7]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z7] ^ S6[z6]
+    mov cl,  [esp + 0x1B]   ; z8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8]
+    mov cl,  [esp + 0x1A]   ; z9
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z9]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8] ^ S8[z9]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z2]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z7] ^ S6[z6] ^ S7[z8] ^ S8[z9] ^ S7[z2]
+    mov [esp + 0x88], eax
+    ; ---- K28
+    xor eax, eax
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[z5]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z4]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[z5] ^ S6[z4]
+    mov cl,  [esp + 0x19]   ; zA
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[zA]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA]
+    mov cl,  [esp + 0x18]   ; zB
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[zB]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA] ^ S8[zB]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[z5] ^ S6[z4] ^ S7[zA] ^ S8[zB] ^ S8[z6]
+    mov [esp + 0x8C], eax
+    ; ---- x0x1x2x3
+    mov eax, [esp + 0x18]   ; z8z9zAzB
+    mov cl,  [esp + 0x16]   ; z5
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z5]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5]
+    mov cl,  [esp + 0x14]   ; z7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7]
+    mov cl,  [esp + 0x17]   ; z4
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z4]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4]
+    mov cl,  [esp + 0x15]   ; z6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6]
+    mov cl,  [esp + 0x13]   ; z0
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[z0]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z8z9zAzB ^ S5[z5] ^ S6[z7] ^ S7[z4] ^ S8[z6] ^ S7[z0]
+    mov [esp + 0x00], eax
+    ; ---- x4x5x6x7
+    mov eax, [esp + 0x10]   ; z0z1z2z3
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x0]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x2]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x3]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3]
+    mov cl,  [esp + 0x11]   ; z2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[z2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z0z1z2z3 ^ S5[x0] ^ S6[x2] ^ S7[x1] ^ S8[x3] ^ S8[z2]
+    mov [esp + 0x04], eax
+    ; ---- x8x9xAxB
+    mov eax, [esp + 0x14]   ; z4z5z6z7
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x7]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x6]
+    sub ebp, 0x1400
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x12]   ; z1
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[z1]
+    sub ebp, 0x1000
+    xor eax, ebx            ; z4z5z6z7 ^ S5[x7] ^ S6[x6] ^ S7[x5] ^ S8[x4] ^ S5[z1]
+    mov [esp + 0x08], eax
+    ; ---- xCxDxExF
+    mov eax, [esp + 0x1C]   ; zCzDzEzF
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[xB]
+    sub ebp, 0x1800
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x8]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8]
+    mov cl,  [esp + 0x10]   ; z3
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[z3]
+    sub ebp, 0x1400
+    xor eax, ebx            ; zCzDzEzF ^ S5[xA] ^ S6[x9] ^ S7[xB] ^ S8[x8] ^ S6[z3]
+    mov [esp + 0x0C], eax
+    ; ---- K29
+    xor eax, eax
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x8]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x8]
+    mov cl,  [esp + 0x0A]   ; x9
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x9]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[x8] ^ S6[x9]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x7]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7]
+    mov cl,  [esp + 0x05]   ; x6
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x6]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7] ^ S8[x6]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[x3]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[x8] ^ S6[x9] ^ S7[x7] ^ S8[x6] ^ S5[x3]
+    mov [esp + 0x90], eax
+    ; ---- K30
+    xor eax, eax
+    mov cl,  [esp + 0x09]   ; xA
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xA]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xA]
+    mov cl,  [esp + 0x08]   ; xB
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xB]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xA] ^ S6[xB]
+    mov cl,  [esp + 0x06]   ; x5
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x5]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5]
+    mov cl,  [esp + 0x07]   ; x4
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x4]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5] ^ S8[x4]
+    mov cl,  [esp + 0x04]   ; x7
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[x7]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xA] ^ S6[xB] ^ S7[x5] ^ S8[x4] ^ S6[x7]
+    mov [esp + 0x94], eax
+    ; ---- K31
+    xor eax, eax
+    mov cl,  [esp + 0x0F]   ; xC
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xC]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xC]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xD]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xC] ^ S6[xD]
+    mov cl,  [esp + 0x00]   ; x3
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x3]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3]
+    mov cl,  [esp + 0x01]   ; x2
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x2]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3] ^ S8[x2]
+    mov cl,  [esp + 0x0B]   ; x8
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x8]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xC] ^ S6[xD] ^ S7[x3] ^ S8[x2] ^ S7[x8]
+    mov [esp + 0x98], eax
+    ; ---- K32
+    xor eax, eax
+    mov cl,  [esp + 0x0D]   ; xE
+    add ebp, 0x1000
+    mov ebx, [ecx*4 + ebp]  ; S5[xE]
+    sub ebp, 0x1000
+    xor eax, ebx            ; S5[xE]
+    mov cl,  [esp + 0x0C]   ; xF
+    add ebp, 0x1400
+    mov ebx, [ecx*4 + ebp]  ; S6[xF]
+    sub ebp, 0x1400
+    xor eax, ebx            ; S5[xE] ^ S6[xF]
+    mov cl,  [esp + 0x02]   ; x1
+    add ebp, 0x1800
+    mov ebx, [ecx*4 + ebp]  ; S7[x1]
+    sub ebp, 0x1800
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1]
+    mov cl,  [esp + 0x03]   ; x0
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[x0]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1] ^ S8[x0]
+    mov cl,  [esp + 0x0E]   ; xD
+    add ebp, 0x1c00
+    mov ebx, [ecx*4 + ebp]  ; S8[xD]
+    sub ebp, 0x1c00
+    xor eax, ebx            ; S5[xE] ^ S6[xF] ^ S7[x1] ^ S8[x0] ^ S8[xD]
+    mov [esp + 0x9C], eax
